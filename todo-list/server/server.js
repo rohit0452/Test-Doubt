@@ -2,6 +2,7 @@ const express = require('express')
 const path = require('path')
 const bodyParser=require('body-parser')
 const mongoose = require('mongoose')
+const url = require('url')
 
 const cors = require('cors')
 const app= express();
@@ -25,9 +26,11 @@ app.use((req,res,next)=>{
 
 app.use('api/todo',require('./routes/index'));
     mongoose
-    .connect('mongodb://127.0.0.1:27017/todo',{
+    .connect('mongodb://127.0.0.1:27017/fullstacktodo',{
     useUnifiedTopology : true,
-    useNewUrlParser : true
+    useNewUrlParser : true,
+    useCreateIndex : true,
+    useFindAndModify : false
 })
 .then(()=>{
 console.log("Server Has Started Mongo")

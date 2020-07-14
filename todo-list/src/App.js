@@ -3,7 +3,8 @@ import './App.css';
 import Todolist from './todoitem';
 import Header from "./header"
 import Footer from "./footer"
-//import Additem from './additem';
+import Additem from './additem';
+
 
 class App extends React.Component {
 
@@ -16,11 +17,14 @@ class App extends React.Component {
         return (
             <div className="container">
                 <Header />
+              
                 <div className="App">
                     <div className="todolist">
                         <Todolist />
                     </div>
+                   <Additem />
                 </div>
+                
                 <Footer />
             </div>
         );

@@ -1,8 +1,9 @@
 import React from 'react'
-import Additem from './additem';
+
 
 
 class Todolist extends React.Component{
+
     render(){
         return(
          <div className="main">
@@ -12,21 +13,17 @@ class Todolist extends React.Component{
                 <div className="Deadline">{this.props.deadline}</div>
                 <button className="del-edit-btn" onClick={()=>this.editbtnclicked()}>Edit</button>
                 <button className="del-edit-btn" onClick={()=>this.editbtnclicked()}>Delete</button>
-            </div>
-            
-            <Additem/>    
+   </div>
+   </div>
+  
+        )}
 
-        </div>
-        )
+        editbtnclicked(){
+            window.alert("Edit Button Clicked")
+        }
+
         
-    }
-
-    editbtnclicked(){
-        console.log("Edit Button Clicked")
-    }
-
-    
-
-}
+ }
+  
 
 export default Todolist;

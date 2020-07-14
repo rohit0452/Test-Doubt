@@ -7,13 +7,14 @@ const { response } = require('express');
 //Add Task
 
 const addtask = async(req,res)=>{
-    const {title , description , deadline} = req.body;
+    const {title , description , deadline , isDone} = req.body;
     console.log(req.body);
 
     var createdTask =new  Todo({
         title , 
         description,
-         deadline
+         deadline,
+         isDone
         })
 
     try{
@@ -61,6 +62,21 @@ const deletetask =async(req,res) => {
     }
 }
 
+// Show Task
+
+const showtask = async(req,res)=>{
+    let list=[];
+    try{
+       list =  await Todo.find({isDone : false})
+    }
+    catch(err){
+        const error = new HttpResponse("Couldnt Find Task",500)
+        return res.send(500).json({result : error})
+    }
+    res.send(200).json({result : list})
+}
+
 exports.addtask = addtask;
 exports.deletetask = deletetask;
 exports.edittask = edittask;
+exports.showtask = showtask;
